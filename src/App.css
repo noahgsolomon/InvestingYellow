@@ -1,0 +1,386 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --x: 0;
+    --y: 0;
+
+    --color-1: hsla(0, 0%, 100%, 0.5);
+    --color-2: hsla(0, 0%, 100%, 0.1);
+    --color-3: #fff;
+    --color-4: hsla(0, 0%, 100%, 0.3);
+
+    --color-5: hsla(0, 0%, 100%, 0.3);
+    --color-6: hsla(0, 0%, 100%, 0.3);
+
+
+
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@font-face {
+  font-family: "Inter-Regular";
+  src: url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter-Bold";
+  src: url("./assets/fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter-ExtraBold";
+  src: url("./assets/fonts/Inter-ExtraBold.ttf") format("truetype");
+}
+
+@keyframes rainbow {
+  0% {
+    stroke: red;
+  }
+  14% {
+    stroke: orange;
+  }
+  28% {
+    stroke: yellow;
+  }
+  42% {
+    stroke: green;
+  }
+  57% {
+    stroke: blue;
+  }
+  71% {
+    stroke: indigo;
+  }
+  85% {
+    stroke: violet;
+  }
+  100% {
+    stroke: red;
+  }
+}
+
+@keyframes green-stroke {
+  0% {
+    stroke: #2ecc71;
+  }
+  25% {
+    stroke: #27ae60;
+  }
+  50% {
+    stroke: #229954;
+  }
+  75% {
+    stroke: #1e824c;
+  }
+  100% {
+    stroke: #2ecc71;
+  }
+}
+
+@keyframes red {
+  0% {
+    stroke: #ff6347;
+  }
+  25% {
+    stroke: #ff4500;
+  }
+  50% {
+    stroke: #ff0000;
+  }
+  75% {
+    stroke: #b22222;
+  }
+  100% {
+    stroke: #ff6347;
+  }
+}
+
+.green-stroke {
+  animation: green-stroke 3s infinite linear;
+}
+
+.red-stroke {
+  animation: red 3s infinite linear;
+}
+
+.rainbow-stroke {
+  animation: rainbow 3s linear infinite;
+}
+
+@layer utilities {
+  .font-family-inter-regular {
+    font-family: "Inter-Regular", sans-serif;
+  }
+}
+
+@layer components {
+  .font-extrabold {
+    font-family: "Inter-ExtraBold", sans-serif;
+  }
+}
+
+body {
+  @apply font-family-inter-regular font-sans text-lg font-medium leading-loose;
+}
+
+body.dark {
+  @apply bg-[#1a1a1a]
+  text-gray-200;
+}
+
+body.light {
+  @apply bg-gray-50
+  text-gray-800;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.font-bold {
+  font-family: "Inter-Bold", sans-serif;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 360deg;
+  inherits: false;
+}
+
+.hero-join-button {
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--color-1),
+    var(--color-2),
+    var(--color-3),
+    var(--color-4)
+  );
+  animation: gradient-rotate 5s linear infinite reverse;
+}
+
+.hero-join-button-dark {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    hsla(0, 0%, 100%, 0.3)
+  ) !important;
+
+  animation: gradient-rotate 5s linear infinite reverse;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 360deg;
+  }
+
+  100% {
+    --gradient-angle: 0deg;
+  }
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0; /* Set initial opacity to 0 */
+  animation: animloader 1.5s linear infinite;
+}
+.loader::after {
+  animation-delay: 0.75s;
+}
+
+.loader::after,
+.loader::before {
+  border: 2px solid #000000;
+}
+
+.loader.dark::after,
+.loader.dark::before {
+  border: 2px solid #ffffff;
+}
+
+.moving-grid-background {
+  will-change: transform;
+  background-size: 3rem 3rem;
+  background-image: linear-gradient(to right, #8882 1px, transparent 1px),
+    linear-gradient(to bottom, #8882 1px, transparent 1px);
+  animation: movingbackground 90s linear infinite !important;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.text-transparent {
+  opacity: 0.8;
+}
+
+.font-extra-bold {
+  font-family: "Inter-ExtraBold", sans-serif;
+}
+
+.animated-feature-cards::before {
+  @apply pointer-events-none absolute select-none rounded-3xl opacity-0 transition-opacity duration-300 hover:opacity-100;
+  background: radial-gradient(
+    1000px circle at var(--x) var(--y),
+    var(--color-5) 0,
+    var(--color-6) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    transparent 80%
+  );
+  z-index: -1;
+  content: "";
+  inset: -1px;
+}
+
+@media (max-width: 768px) {
+  .animated-feature-cards::before {
+    background: none !important;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.wl-form-button {
+  background: linear-gradient(
+    var(--gradient-angle),
+    #34d399,
+    #60a5fa,
+    #ff88ff,
+    #ff8844
+  );
+  animation: gradient-rotate 5s linear infinite reverse;
+}
+
+.magic-account-button {
+  background: linear-gradient(
+    var(--gradient-angle),
+    #FFD700,  /* Gold */
+    #ece9e0,  /* Light Gold */
+    #DAA520,  /* Goldenrod */
+    #FFB90F   /* Dark Goldenrod */
+  );
+  animation: gradient-rotate 5s linear infinite reverse;
+}
