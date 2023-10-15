@@ -1,5 +1,5 @@
 # [investingyellow.com](https://investingyellow.com)
-Try it for free today 😎
+Try it for free today 😎 😎
 
 Built for Hack GT X
 
